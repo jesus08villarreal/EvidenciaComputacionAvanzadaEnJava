@@ -1,15 +1,15 @@
 package com.imcapp.service;
 
-import com.imcapp.model.MedicionIMC;
-import com.imcapp.model.Usuario;
-import com.imcapp.util.Database;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.imcapp.model.MedicionIMC;
+import com.imcapp.model.Usuario;
+import com.imcapp.util.Database;
 
 public class IMCService {
     private UsuarioService usuarioService;

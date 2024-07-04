@@ -1,17 +1,17 @@
 package com.imcapp.controller;
 
+import java.io.IOException;
+import java.util.List;
+
+import com.imcapp.model.MedicionIMC;
+import com.imcapp.service.IMCService;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-
-import com.imcapp.model.MedicionIMC;
-import com.imcapp.service.IMCService;
-
-import java.io.IOException;
-import java.util.List;
 
 @WebServlet("/historialIMC")
 public class HistorialIMCServlet extends HttpServlet {

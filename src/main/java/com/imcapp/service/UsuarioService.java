@@ -1,12 +1,12 @@
 package com.imcapp.service;
 
-import com.imcapp.model.Usuario;
-import com.imcapp.util.Database;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import com.imcapp.model.Usuario;
+import com.imcapp.util.Database;
 
 public class UsuarioService {
 

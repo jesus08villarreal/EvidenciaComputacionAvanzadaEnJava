@@ -3,6 +3,7 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+target/
 
 ### STS ###
 .apt_generated
@@ -31,3 +32,10 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# War files and jars
+*.war
+target/*.war
+
+target/IMCApp-1.0-SNAPSHOT.war
+target/classes/com/imcapp/controller/CalcularIMCServlet.class

@@ -1,15 +1,15 @@
 package com.imcapp.controller;
 
+import java.io.IOException;
+
+import com.imcapp.model.Usuario;
+import com.imcapp.service.UsuarioService;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
-import com.imcapp.model.Usuario;
-import com.imcapp.service.UsuarioService;
-
-import java.io.IOException;
 
 @WebServlet("/registro")
 public class RegistroServlet extends HttpServlet {
@@ -28,8 +28,19 @@ public class RegistroServlet extends HttpServlet {
         int edad = Integer.parseInt(request.getParameter("edad"));
         String sexo = request.getParameter("sexo");
         float estatura = Float.parseFloat(request.getParameter("estatura"));
-        float peso = Float.parseFloat(request.getParameter("peso"));
         String password = request.getParameter("password");
+
+        if (edad < 15 || estatura < 1 || estatura > 2.5) {
+            request.setAttribute("error", "Edad o estatura no válida.");
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+            return;
+        }
+        
+        if (usuarioService.obtenerUsuarioPorNombre(nombreUsuario) != null) {
+            request.setAttribute("error", "Nombre de usuario ya existe.");
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+            return;
+        }
 
         Usuario usuario = new Usuario();
         usuario.setNombreCompleto(nombreCompleto);
@@ -37,11 +48,10 @@ public class RegistroServlet extends HttpServlet {
         usuario.setEdad(edad);
         usuario.setSexo(sexo);
         usuario.setEstatura(estatura);
-        usuario.setPeso(peso);
         usuario.setPassword(password);
 
         usuarioService.registrarUsuario(usuario);
 
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("index.jsp?registered=true");
     }
 }
